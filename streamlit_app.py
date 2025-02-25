@@ -25,17 +25,15 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 # Convert the snowark Dataframe to a pandas DataFrame so we can use the LOC Function
 pd_df = my_dataframe.to_pandas()
 st.dataframe(pd_df)
-st.stop
+#st.stop
 
 ingredients_list = st.multiselect(
     "Choose up to 5 ingredients:",
-    my_dataframe
+    my_dataframe,
+    max_selection = 5
 )
 
 if ingredients_list:
-    #st.write(ingredients_list)
-    #st.text(ingredients_list)
-    
     ingredients_string = ''
     
     for fruit_chosen in ingredients_list:
